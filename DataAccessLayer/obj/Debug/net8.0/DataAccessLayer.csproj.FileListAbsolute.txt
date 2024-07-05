@@ -1,0 +1,17 @@
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.deps.json
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.runtimeconfig.json
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\bin\Debug\net8.0\EntityLayer.dll
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\bin\Debug\net8.0\EntityLayer.pdb
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CopyComplete
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.dll
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.genruntimeconfig.cache
+C:\Users\zomt\Desktop\ömer\MVC\GeceKodu\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
