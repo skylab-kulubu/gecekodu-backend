@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zomt\\Desktop\\ömer\\MVC\\GeceKodu\\EntityLayer\\EntityLayer.csproj": {}
+    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zomt\\Desktop\\ömer\\MVC\\GeceKodu\\EntityLayer\\EntityLayer.csproj": {
+    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zomt\\Desktop\\ömer\\MVC\\GeceKodu\\EntityLayer\\EntityLayer.csproj",
+        "projectUniqueName": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "C:\\Users\\zomt\\Desktop\\ömer\\MVC\\GeceKodu\\EntityLayer\\EntityLayer.csproj",
-        "packagesPath": "C:\\Users\\zomt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zomt\\Desktop\\ömer\\MVC\\GeceKodu\\EntityLayer\\obj\\",
+        "projectPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj",
+        "packagesPath": "/Users/yusssss/.nuget/packages/",
+        "outputPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\zomt\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/yusssss/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
