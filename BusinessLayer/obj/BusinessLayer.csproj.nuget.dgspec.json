@@ -1,20 +1,83 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/BusinessLayer/BusinessLayer.csproj": {}
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/BusinessLayer/BusinessLayer.csproj": {
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/BusinessLayer/BusinessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/BusinessLayer/BusinessLayer.csproj",
-        "packagesPath": "/Users/yusssss/.nuget/packages/",
-        "outputPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/BusinessLayer/obj/",
+        "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yusssss/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj": {
+                "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj"
+              },
+              "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
+                "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj",
+        "projectName": "CoreLayer",
+        "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj",
+        "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +116,139 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectName": "DataAccessLayer",
+        "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
+                "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj",
+        "projectName": "EntityLayer",
+        "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj",
+        "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/CoreLayer/CoreLayer.csproj": {}
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj": {}
   },
   "projects": {
-    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/CoreLayer/CoreLayer.csproj": {
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/CoreLayer/CoreLayer.csproj",
+        "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj",
         "projectName": "CoreLayer",
-        "projectPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/CoreLayer/CoreLayer.csproj",
-        "packagesPath": "/Users/yusssss/.nuget/packages/",
-        "outputPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/CoreLayer/obj/",
+        "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj",
+        "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yusssss/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

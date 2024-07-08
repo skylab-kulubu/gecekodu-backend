@@ -4,21 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EntityLayer.Abstract;
 
 namespace EntityLayer.Concrete
 {
-    public class User
+    public class User:IEntity
     {
         [Key]
-        public int UserID { get; set; }
+        public int ID { get; set; }
 
         [StringLength(50)]
-        public string UserName { get; set; }
+        public string FirstName { get; set; }
 
         [StringLength(50)]
-        public string UserLastName { get; set; }
+        public string LastName { get; set; }
 
         [StringLength(50)]
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
+        
     }
 }

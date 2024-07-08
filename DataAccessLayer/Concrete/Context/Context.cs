@@ -12,7 +12,7 @@ namespace DataAccessLayer.Concrete.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-BOV3B8B\\SQLEXPRESS;database=GeceKoduDb; integrated security=true; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=GecekoduDB;Integrated Security=True;TrustServerCertificate=True;");
         }
 
         public DbSet<Event> Events { get; set; }

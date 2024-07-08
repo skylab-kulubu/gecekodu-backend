@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IUserDal
+    public interface IUserDal:IGenericDal<User>
     {
-        List<User> ListUser();
-        void AddUser(User user);
-        void DeleteUser(User user);
-        void UpdateUser(User user);
-        User GetUser(int id);
+        
     }
 }

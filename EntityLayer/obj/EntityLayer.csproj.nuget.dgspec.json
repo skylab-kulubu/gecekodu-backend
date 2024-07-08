@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj": {}
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {}
   },
   "projects": {
-    "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj": {
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj",
+        "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj",
-        "packagesPath": "/Users/yusssss/.nuget/packages/",
-        "outputPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/obj/",
+        "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj",
+        "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/yusssss/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

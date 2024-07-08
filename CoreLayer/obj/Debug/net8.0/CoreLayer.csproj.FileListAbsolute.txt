@@ -1,0 +1,12 @@
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\bin\Debug\net8.0\CoreLayer.deps.json
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\bin\Debug\net8.0\CoreLayer.dll
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\bin\Debug\net8.0\CoreLayer.pdb
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.AssemblyInfoInputs.cache
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.AssemblyInfo.cs
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.sourcelink.json
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.dll
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\refint\CoreLayer.dll
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.pdb
+C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\ref\CoreLayer.dll

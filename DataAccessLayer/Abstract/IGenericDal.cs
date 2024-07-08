@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace DataAccessLayer.Abstract
         void Insert(X x);
         void Delete(X x);
         void Update(X x);
-        List<X> GetAll();
-        X GetById(int id);
+        List<X> GetAll(Expression<Func<X, bool>> filter = null);
+        X Get(Expression<Func<X, bool>> filter);
     }
 }

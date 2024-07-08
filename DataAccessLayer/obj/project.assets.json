@@ -4123,19 +4123,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/yusssss/.nuget/packages/": {}
+    "C:\\Users\\yusuf\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/DataAccessLayer/DataAccessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj",
       "projectName": "DataAccessLayer",
-      "projectPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/DataAccessLayer/DataAccessLayer.csproj",
-      "packagesPath": "/Users/yusssss/.nuget/packages/",
-      "outputPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/DataAccessLayer/obj/",
+      "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj",
+      "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/yusssss/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4147,8 +4147,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj": {
-              "projectPath": "/Users/yusssss/Desktop/projects/backend/gecekodu-backend/EntityLayer/EntityLayer.csproj"
+            "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
+              "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj"
             }
           }
         }
@@ -4200,7 +4200,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
