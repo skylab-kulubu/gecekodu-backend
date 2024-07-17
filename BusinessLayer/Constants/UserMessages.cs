@@ -1,6 +1,4 @@
-﻿using EntityLayer.Concrete;
-
-namespace BusinessLayer.Constants;
+﻿namespace BusinessLayer.Constants;
 
 public class UserMessages
 {

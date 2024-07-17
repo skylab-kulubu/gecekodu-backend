@@ -1,18 +1,13 @@
 ﻿using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IWorkshopDal
+    public interface IWorkshopDal:IGenericDal<Workshop>
     {
-        List<Workshop> ListWorkshop();
-        void AddWorksop(Workshop workshop);
+        /*List<Workshop> ListWorkshop();
+        void AddWorkshop(Workshop workshop);
         void DeleteWorkshop(Workshop workshop);
         void UpdateWorkshop(Workshop workshop);
-        Workshop GetWorkshop(int id);
+        Workshop GetWorkshop(int id);*/
     }
 }

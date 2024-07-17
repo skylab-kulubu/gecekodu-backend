@@ -13,9 +13,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddSingleton<IUserService,UserManager>();
+builder.Services.AddSingleton<IUserService, UserManager>();
 builder.Services.AddSingleton<IUserDal, UserDal>();
-
+builder.Services.AddSingleton<IEventService, EventManager>();
+builder.Services.AddSingleton<IEventDal, EventDal>();
+builder.Services.AddSingleton<IWorkshopService, WorkshopManager>();
+builder.Services.AddSingleton<IWorkshopDal, WorkshopDal>();
 
 
 var app = builder.Build();

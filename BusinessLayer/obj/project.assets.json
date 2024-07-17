@@ -2800,38 +2800,40 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yusuf\\.nuget\\packages\\": {}
+    "C:\\Users\\zomt\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj",
       "projectName": "BusinessLayer",
-      "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj",
-      "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\BusinessLayer\\obj\\",
+      "projectPath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\BusinessLayer\\BusinessLayer.csproj",
+      "packagesPath": "C:\\Users\\zomt\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yusuf\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\zomt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj": {
-              "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj"
+            "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj": {
+              "projectPath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj"
             },
-            "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj"
+            "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+              "projectPath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj"
             },
-            "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
-              "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\projects\\backend\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj"
+            "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
+              "projectPath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj"
             }
           }
         }
@@ -2861,7 +2863,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\yusuf\\.dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

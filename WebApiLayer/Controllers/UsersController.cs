@@ -1,37 +1,34 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
-using EntityLayer.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiLayer.Controllers;
 
-
 [Route("api/[controller]")]
 [ApiController]
-public class UsersController: ControllerBase
-{ 
+public class UsersController : ControllerBase
+{
     IUserService _userService;
 
     public UsersController(IUserService userService)
     {
         _userService = userService;
     }
-    
-    
-    
+
+
     [HttpGet("getAllUsers")]
     public IActionResult GetAllUsers()
     {
-       var result = _userService.GetAllUsers();
+        var result = _userService.GetAllUsers();
 
-       if (result.Success)
-       {
-           return Ok(result);
-       }
+        if (result.Success)
+        {
+            return Ok(result);
+        }
 
-       return BadRequest(result);
+        return BadRequest(result);
     }
-    
+
     [HttpGet("getById/{id}")]
     public IActionResult GetUserById(int id)
     {
@@ -44,7 +41,7 @@ public class UsersController: ControllerBase
 
         return BadRequest(result);
     }
-    
+
     [HttpPost("addUser")]
     public IActionResult AddUser(User user)
     {
@@ -57,7 +54,7 @@ public class UsersController: ControllerBase
 
         return BadRequest(result);
     }
-    
+
     [HttpPut("updateUser/{id}")]
     public IActionResult UpdateUser(int id, User user)
     {
@@ -71,7 +68,7 @@ public class UsersController: ControllerBase
 
         return BadRequest(result);
     }
-    
+
     [HttpDelete("deleteUser/{id}")]
     public IActionResult DeleteUser(int id)
     {
@@ -84,7 +81,7 @@ public class UsersController: ControllerBase
 
         return BadRequest(result);
     }
-    
+
     [HttpGet("getUserByEmail/{email}")]
     public IActionResult GetUserByEmail(string email)
     {
@@ -97,5 +94,4 @@ public class UsersController: ControllerBase
 
         return BadRequest(result);
     }
-    
 }

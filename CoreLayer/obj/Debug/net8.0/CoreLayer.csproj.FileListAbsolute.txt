@@ -10,3 +10,15 @@ C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\o
 C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\refint\CoreLayer.dll
 C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.pdb
 C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\CoreLayer\obj\Debug\net8.0\ref\CoreLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\bin\Debug\net8.0\CoreLayer.deps.json
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\bin\Debug\net8.0\CoreLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\bin\Debug\net8.0\CoreLayer.pdb
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.AssemblyInfoInputs.cache
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.AssemblyInfo.cs
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.csproj.CoreCompileInputs.cache
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.sourcelink.json
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\refint\CoreLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.pdb
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\ref\CoreLayer.dll

@@ -21,3 +21,15 @@ C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\EntityLayer
 C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\EntityLayer\obj\Debug\net8.0\refint\EntityLayer.dll
 C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.pdb
 C:\Users\yusuf\OneDrive\Masaüstü\projects\backend\gecekodu-backend\EntityLayer\obj\Debug\net8.0\ref\EntityLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\bin\Debug\net8.0\EntityLayer.deps.json
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\bin\Debug\net8.0\EntityLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\bin\Debug\net8.0\EntityLayer.pdb
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.AssemblyInfoInputs.cache
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.AssemblyInfo.cs
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.sourcelink.json
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\refint\EntityLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\EntityLayer.pdb
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\EntityLayer\obj\Debug\net8.0\ref\EntityLayer.dll
