@@ -22,3 +22,4 @@ C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\refint\CoreLayer.dll
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.pdb
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\ref\CoreLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.csproj.AssemblyReference.cache

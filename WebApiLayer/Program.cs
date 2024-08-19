@@ -1,7 +1,11 @@
+using System.Text;
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using IdentityConstants = EntityLayer.Dtos.Roles.IdentityConstants;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Auth
+var issuer = builder.Configuration["JwtConfig:Issuer"];
+var audience = builder.Configuration["JwtConfig:Audience"];
+var signingKey = builder.Configuration["JwtConfig:SigningKey"];
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = issuer,
+        ValidAudience = audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey))
+    };
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(IdentityConstants.AdminUserPolicyName, p =>
+        p.RequireClaim(IdentityConstants.AdminUserClaimName, "true"));
+});
 
 builder.Services.AddSingleton<IUserService, UserManager>();
 builder.Services.AddSingleton<IUserDal, UserDal>();
@@ -31,6 +58,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Authentication happens first
+app.UseAuthentication();
+
+//Authorization happens after authentication
+app.UseAuthorization();
 
 app.MapControllers();
 

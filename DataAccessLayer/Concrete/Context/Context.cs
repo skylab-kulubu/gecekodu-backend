@@ -1,10 +1,5 @@
 ﻿using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.Context
 {
@@ -21,5 +16,40 @@ namespace DataAccessLayer.Concrete.Context
         public DbSet<Workshop> Workshops { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<UserWorkshop> UserWorkshops { get; set; }
+
+        public DbSet<UserEvent> UserEvents { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Many to Many Relationship between User and Workshop
+            modelBuilder.Entity<UserWorkshop>()
+                .HasKey(sc => new { sc.UserID, sc.WorkshopID });
+
+            modelBuilder.Entity<UserWorkshop>()
+                .HasOne(sc => sc.User)
+                .WithMany(s => s.UserWorkshops)
+                .HasForeignKey(sc => sc.UserID);
+
+            modelBuilder.Entity<UserWorkshop>()
+                .HasOne(sc => sc.Workshop)
+                .WithMany(c => c.UserWorkshops)
+                .HasForeignKey(sc => sc.WorkshopID);
+
+            // Many to Many Relationship between User and Event
+            modelBuilder.Entity<UserEvent>()
+                .HasKey(sc => new { sc.UserID, sc.EventID });
+
+            modelBuilder.Entity<UserEvent>()
+                .HasOne(sc => sc.User)
+                .WithMany(s => s.UserEvents)
+                .HasForeignKey(sc => sc.UserID);
+
+            modelBuilder.Entity<UserEvent>()
+                .HasOne(sc => sc.Event)
+                .WithMany(c => c.UserEvents)
+                .HasForeignKey(sc => sc.EventID);
+        }
     }
 }

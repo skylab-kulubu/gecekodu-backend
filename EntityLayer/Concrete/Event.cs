@@ -6,14 +6,16 @@ namespace EntityLayer.Concrete
     public class Event:IEntity
     {
         [Key]
-        public int EventID { get; set; }
+        public int Id { get; set; }
 
         [StringLength(50)]
-        public string EventName { get; set; }
+        public string Name { get; set; }
 
         [StringLength(50)]
-        public string EventDescription { get; set; }
+        public string Description { get; set; }
 
-        public DateTime EventDate { get; set; }
+        public DateTime Date { get; set; }
+        
+        public ICollection<UserEvent> UserEvents { get; set; }
     }
 }

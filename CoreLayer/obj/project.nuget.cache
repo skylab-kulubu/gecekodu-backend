@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Jc/S44fgS8TeHrlLkvgJQvv6Ico/CVvd48Ye7YtWM0ppyspkwoJ/9MGezLL9aJU2Ya13kq9uF1rcMXlZ1ccuag==",
+  "dgSpecHash": "ZMbI+qDLLFOuEiXboKG205U7v+F5vb7xqOz1ucXnATFBuk89heVWhD6VEuwMssYgoIRh9crzeMYYDTkgj7MJHA==",
   "success": true,
   "projectFilePath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\CoreLayer\\CoreLayer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\zomt\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
+    "C:\\Users\\zomt\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.3\\microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",
+    "C:\\Users\\zomt\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.0.3\\microsoft.identitymodel.jsonwebtokens.7.0.3.nupkg.sha512",
+    "C:\\Users\\zomt\\.nuget\\packages\\microsoft.identitymodel.logging\\7.0.3\\microsoft.identitymodel.logging.7.0.3.nupkg.sha512",
+    "C:\\Users\\zomt\\.nuget\\packages\\microsoft.identitymodel.protocols\\7.0.3\\microsoft.identitymodel.protocols.7.0.3.nupkg.sha512",
+    "C:\\Users\\zomt\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.0.3\\microsoft.identitymodel.protocols.openidconnect.7.0.3.nupkg.sha512",
+    "C:\\Users\\zomt\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.0.3\\microsoft.identitymodel.tokens.7.0.3.nupkg.sha512",
+    "C:\\Users\\zomt\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.0.3\\system.identitymodel.tokens.jwt.7.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

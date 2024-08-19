@@ -158,3 +158,4 @@ C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\WebApiLayer\ob
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\WebApiLayer\obj\Debug\net8.0\WebApiLayer.pdb
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\WebApiLayer\obj\Debug\net8.0\WebApiLayer.genruntimeconfig.cache
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\WebApiLayer\obj\Debug\net8.0\ref\WebApiLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\WebApiLayer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

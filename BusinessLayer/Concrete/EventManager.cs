@@ -14,62 +14,10 @@ public class EventManager : IEventService
     {
         _eventDal = eventDal;
     }
-
-    public IDataResult<List<Event>> GetAllEvents()
-    {
-        return new SuccessDataResult<List<Event>>(_eventDal.GetAll(), EventMessages.EventsBroughtSuccessfully);
-    }
-
-    public IDataResult<Event> GetEventById(int eventId)
-    {
-        var @event = _eventDal.Get(@event => @event.EventID == eventId);
-        if (@event == null)
-        {
-            return new ErrorDataResult<Event>(@event, EventMessages.EventNotFound);
-        }
-
-        return new SuccessDataResult<Event>(@event, EventMessages.EventsBroughtSuccessfully);
-    }
-
-    public IResult AddEvent(Event @event)
-    {
-        var eventResult = CheckIfEventExists(@event.EventID);
-        if (eventResult.Success)
-        {
-            return new ErrorResult(eventResult.Message);
-        }
-
-        _eventDal.Insert(@event);
-        return new SuccessResult(EventMessages.EventAddedSuccessfully);
-    }
-
-    public IResult UpdateEvent(Event @event)
-    {
-        var eventResult = GetEventById(@event.EventID);
-        if (!eventResult.Success)
-        {
-            return eventResult;
-        }
-
-        _eventDal.Update(@event);
-        return new SuccessResult(EventMessages.EventUpdatedSuccessfully);
-    }
-
-    public IResult DeleteEvent(int eventID)
-    {
-        var eventResult = GetEventById(eventID);
-        if (!eventResult.Success)
-        {
-            return eventResult;
-        }
-
-        _eventDal.Delete(eventResult.Data);
-        return new SuccessResult(EventMessages.EventDeletedSuccessfully);
-    }
-
+    
     public IDataResult<Event> GetEventByName(string eventName)
     {
-        var @event = _eventDal.Get(@event => @event.EventName == eventName);
+        var @event = _eventDal.Get(@event => @event.Name == eventName);
 
         if (@event == null)
         {
@@ -81,7 +29,7 @@ public class EventManager : IEventService
 
     private IResult CheckIfEventExists(int eventId)
     {
-        var eventResult = _eventDal.Get(@event => @event.EventID == eventId);
+        var eventResult = _eventDal.Get(@event => @event.Id == eventId);
         if (eventResult == null)
         {
             return new ErrorResult(EventMessages.EventNotFound);
@@ -92,12 +40,68 @@ public class EventManager : IEventService
 
     private IResult CheckIfNameExists(string eventName)
     {
-        var eventResult = _eventDal.Get(@event => @event.EventName == eventName);
+        var eventResult = _eventDal.Get(@event => @event.Name == eventName);
         if (eventResult == null)
         {
             return new ErrorResult(EventMessages.EventNotFound);
         }
 
         return new SuccessResult(EventMessages.EventsAlreadyExists);
+    }
+
+    public IDataResult<Event> GetById(int id)
+    {
+        var result = _eventDal.Get(@event => @event.Id == id);
+        if (result == null)
+        {
+            return new ErrorDataResult<Event>(result, EventMessages.EventNotFound);
+        }
+        return new SuccessDataResult<Event>(result, EventMessages.EventsBroughtSuccessfully);
+    }
+
+    public IDataResult<List<Event>> GetAll()
+    {
+        var result = _eventDal.GetAll();
+        if (result.Count == 0)
+        {
+            return new ErrorDataResult<List<Event>>(result, EventMessages.EventsNotFound);
+        }
+        return new SuccessDataResult<List<Event>>(result, EventMessages.EventsBroughtSuccessfully);
+    }
+
+    public IResult Add(Event p)
+    {
+        var result = CheckIfNameExists(p.Name);
+        if (result.Success)
+        {
+            return new ErrorResult(EventMessages.EventAlreadyExists);
+        }
+
+        _eventDal.Insert(p);
+        return new SuccessResult(EventMessages.EventAddedSuccessfully);
+    }
+
+    public IResult Update(Event p)
+    {
+        var result = GetById(p.Id);
+        if (!result.Success)
+        {
+            return result;
+        }
+
+        _eventDal.Update(p);
+        return new SuccessResult(EventMessages.EventUpdatedSuccessfully);
+    }
+
+    public IResult Delete(int id)
+    {
+        var result = GetById(id);
+        if (!result.Success)
+        {
+            return result;
+        }
+
+        _eventDal.Delete(result.Data);
+        return new SuccessResult(EventMessages.EventDeletedSuccessfully);
     }
 }

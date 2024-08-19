@@ -1,24 +1,20 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiLayer.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class EventsController : ControllerBase
+[Authorize]
+public class EventsController(IEventService eventService) : ControllerBase
 {
-    IEventService _eventService;
-
-    public EventsController(IEventService eventService)
-    {
-        _eventService = eventService;
-    }
-
     [HttpGet("getAllEvents")]
+    [AllowAnonymous]
     public IActionResult GetAllEvents()
     {
-        var result = _eventService.GetAllEvents();
+        var result = eventService.GetAll();
 
         if (result.Success)
         {
@@ -29,9 +25,10 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet("getById/{id}")]
+    [AllowAnonymous]
     public IActionResult GetEventById(int id)
     {
-        var result = _eventService.GetEventById(id);
+        var result = eventService.GetById(id);
 
         if (result.Success)
         {
@@ -44,7 +41,7 @@ public class EventsController : ControllerBase
     [HttpPost("addEvent")]
     public IActionResult AddEvent(Event @event)
     {
-        var result = _eventService.AddEvent(@event);
+        var result = eventService.Add(@event);
 
         if (result.Success)
         {
@@ -57,8 +54,8 @@ public class EventsController : ControllerBase
     [HttpPut("updateEvent/{id}")]
     public IActionResult UpdateEvent(int id, Event @event)
     {
-        @event.EventID = id;
-        var result = _eventService.UpdateEvent(@event);
+        @event.Id = id;
+        var result = eventService.Update(@event);
 
         if (result.Success)
         {
@@ -71,7 +68,7 @@ public class EventsController : ControllerBase
     [HttpDelete("deleteEvent/{id}")]
     public IActionResult DeleteEvent(int id)
     {
-        var result = _eventService.DeleteEvent(id);
+        var result = eventService.Delete(id);
 
         if (result.Success)
         {
@@ -82,9 +79,10 @@ public class EventsController : ControllerBase
     }
 
     [HttpGet("getEventByName/{name}")]
+    [AllowAnonymous]
     public IActionResult GetEventByName(string name)
     {
-        var result = _eventService.GetEventByName(name);
+        var result = eventService.GetEventByName(name);
 
         if (result.Success)
         {

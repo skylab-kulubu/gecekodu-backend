@@ -6,12 +6,14 @@ namespace EntityLayer.Concrete
     public class Workshop:IEntity
     {
         [Key]
-        public int WorkshopID { get; set; }
+        public int Id { get; set; }
 
         [StringLength(50)]
-        public string WorkshopName { get; set; }
+        public string Name { get; set; }
 
         [StringLength(50)]
-        public string WorkshopDescription { get; set;}
+        public string Description { get; set;}
+        
+        public ICollection<UserWorkshop> UserWorkshops { get; set; }
     }
 }

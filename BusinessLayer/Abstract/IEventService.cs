@@ -3,17 +3,7 @@ using EntityLayer.Concrete;
 
 namespace BusinessLayer.Abstract;
 
-public interface IEventService
+public interface IEventService: IGenericService<Event>
 {
-    IDataResult<List<Event>> GetAllEvents();
-
-    IDataResult<Event> GetEventById(int eventId);
-
-    IResult AddEvent(Event @event);
-
-    IResult UpdateEvent(Event @event);
-
-    IResult DeleteEvent(int eventId);
-
     IDataResult<Event> GetEventByName(string eventName);
 }
