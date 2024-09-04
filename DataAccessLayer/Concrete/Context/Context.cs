@@ -7,8 +7,13 @@ namespace DataAccessLayer.Concrete.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "server=DESKTOP-BOV3B8B\\SQLEXPRESS;database=GeceKoduDb; integrated security=true; TrustServerCertificate=True");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(
+                    "Server=sqlserver;Database=GeceKoduDb;User Id=sa;Password=12345678Aa.;TrustServerCertificate=True",
+                    sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
+                );
+            }
         }
 
         public DbSet<Event> Events { get; set; }
