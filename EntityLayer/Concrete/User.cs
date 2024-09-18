@@ -14,14 +14,14 @@ namespace EntityLayer.Concrete
         [StringLength(50)]
         public string LastName { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string Email { get; set; }
+    
+        [StringLength(500)]
+        public byte[] PasswordSalt { get; set; }
         
-        [StringLength(50)]
-        public string Password { get; set; }
-        
-        [StringLength(20)]
-        public string Role { get; set; }
+        [StringLength(500)]
+        public byte[] PasswordHash { get; set; }
         
         public ICollection<UserWorkshop> UserWorkshops { get; set; }
         

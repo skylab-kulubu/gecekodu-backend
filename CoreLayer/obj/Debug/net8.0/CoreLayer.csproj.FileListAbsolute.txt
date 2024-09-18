@@ -23,3 +23,8 @@ C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.pdb
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\ref\CoreLayer.dll
 C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.csproj.AssemblyReference.cache
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\bin\Debug\net8.0\DataAccessLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\bin\Debug\net8.0\EntityLayer.dll
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\bin\Debug\net8.0\EntityLayer.pdb
+C:\Users\zomt\Desktop\ömer\WebLab\Gecekodu Repo\gecekodu-backend\CoreLayer\obj\Debug\net8.0\CoreLayer.csproj.CopyComplete

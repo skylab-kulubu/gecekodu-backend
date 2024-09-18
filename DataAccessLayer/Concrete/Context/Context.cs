@@ -20,6 +20,8 @@ namespace DataAccessLayer.Concrete.Context
         public DbSet<UserWorkshop> UserWorkshops { get; set; }
 
         public DbSet<UserEvent> UserEvents { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

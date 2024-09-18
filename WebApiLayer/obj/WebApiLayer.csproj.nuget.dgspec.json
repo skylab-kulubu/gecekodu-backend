@@ -98,7 +98,14 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj": {
+                "projectPath": "C:\\Users\\zomt\\Desktop\\ömer\\WebLab\\Gecekodu Repo\\gecekodu-backend\\EntityLayer\\EntityLayer.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

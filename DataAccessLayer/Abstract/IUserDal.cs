@@ -2,8 +2,8 @@
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IUserDal:IGenericDal<User>
+    public interface IUserDal : IGenericDal<User>
     {
-        
+        List<OperationClaim> GetClaims(User user);
     }
 }

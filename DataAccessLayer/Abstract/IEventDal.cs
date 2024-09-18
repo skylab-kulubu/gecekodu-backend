@@ -2,8 +2,7 @@
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IEventDal:IGenericDal<Event>
+    public interface IEventDal : IGenericDal<Event>
     {
-        
     }
 }

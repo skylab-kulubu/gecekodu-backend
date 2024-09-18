@@ -1,6 +1,10 @@
 using System.Text;
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using CoreLayer.DependencyReselvors;
+using CoreLayer.Extensions;
+using CoreLayer.Utilities.IoC;
+using CoreLayer.Utilities.Security.JWT;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -15,6 +19,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+IServiceCollection services = null;
 
 //Auth
 var issuer = builder.Configuration["JwtConfig:Issuer"];
@@ -34,6 +40,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
+// ServiceTool.Create(builder.Services);
+
+services.AddDependencyResolvers(new ICoreModule[]
+{
+    new CoreModule()
+});
+
+
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(IdentityConstants.AdminUserPolicyName, p =>
@@ -46,6 +60,8 @@ builder.Services.AddSingleton<IEventService, EventManager>();
 builder.Services.AddSingleton<IEventDal, EventDal>();
 builder.Services.AddSingleton<IWorkshopService, WorkshopManager>();
 builder.Services.AddSingleton<IWorkshopDal, WorkshopDal>();
+builder.Services.AddSingleton<IAuthService, AuthManager>();
+builder.Services.AddSingleton<ITokenHelper, JwtHelper>();
 
 
 var app = builder.Build();

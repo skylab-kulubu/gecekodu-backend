@@ -3,7 +3,6 @@ using BusinessLayer.Constants;
 using CoreLayer.Utilities.Results;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using EntityLayer.Dtos;
 
 namespace BusinessLayer.Concrete;
 
@@ -27,7 +26,6 @@ public class UserManager : IUserService
 
         return new SuccessDataResult<User>(user, UserMessages.UserBroughtSuccessfully);
     }
-
 
     private IResult CheckIfEmailExists(string email)
     {
@@ -109,5 +107,10 @@ public class UserManager : IUserService
 
         _userDal.Delete(result.Data);
         return new SuccessResult(UserMessages.UserDeletedSuccessfully);
+    }
+    
+    public List<OperationClaim> GetClaims(User user)
+    {
+        return _userDal.GetClaims(user);
     }
 }

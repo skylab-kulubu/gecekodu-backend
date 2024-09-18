@@ -2,9 +2,9 @@
 
 public class EventMessages
 {
-    public const string EventBroughtSuccessfully = "Etkinlik başarıyla getirildi!";
-    public const string EventAddedSuccessfully = "Etkinlik başarıyla eklendi!";
-    public static string EventsBroughtSuccessfully = "Etkinlikler başarıyla getirildi!";
+    public static string EventBroughtSuccessfully = "Etkinlik başarıyla getirildi!";
+    public static string EventAddedSuccessfully = "Etkinlik başarıyla eklendi!";
+    public static string EventsBroughtSuccessfully = "Etkinlikler başarıyla getirildi!"; // projede her yerden erişmek ve ramde çok yer kaplamasın diye static yopılır
     public static string EventNotFound = "Etkinlik bulunamadı!";
     public static string EventsNotFound = "Etkinlikler bulunamadı!";
     public static string EventAlreadyExists = "Bu etkinlik zaten kullanımda!";

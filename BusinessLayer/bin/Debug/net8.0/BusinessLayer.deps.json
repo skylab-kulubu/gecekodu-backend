@@ -498,6 +498,8 @@
       },
       "CoreLayer/1.0.0": {
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
+          "EntityLayer": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.0"
         },
         "runtime": {

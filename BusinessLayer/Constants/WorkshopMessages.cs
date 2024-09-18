@@ -2,8 +2,8 @@
 
 public class WorkshopMessages
 {
-    public const string WorkshopBroughtSuccessfully = "Çalışma başarıyla getirildi!";
-    public const string WorkshopAddedSuccessfully = "Çalışma başarıyla eklendi!";
+    public static string WorkshopBroughtSuccessfully = "Çalışma başarıyla getirildi!";
+    public static string WorkshopAddedSuccessfully = "Çalışma başarıyla eklendi!";
     public static string WorkshopsBroughtSuccessfully = "Çalışmalar başarıyla getirildi!";
     public static string WorkshopNotFound = "Çalışma bulunamadı!";
     public static string WorkshopsNotFound = "Çalışmalar bulunamadı!";

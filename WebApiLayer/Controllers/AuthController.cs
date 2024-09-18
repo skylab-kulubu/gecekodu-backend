@@ -1,8 +1,6 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+﻿using BusinessLayer.Abstract;
+using EntityLayer.Dtos.User;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace WebApiLayer.Controllers;
 
@@ -10,54 +8,47 @@ namespace WebApiLayer.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private const string SigningKey = "ThisIsASecretKeyForAuthenticatingTheToken";
+    private IAuthService _authService;
 
-    [HttpGet]
-    public string Get(string username, string password)
+    public AuthController(IAuthService authService)
     {
-        var claims = new[]
-        {
-            new Claim(ClaimTypes.Name, username),
-            new Claim(JwtRegisteredClaimNames.Email, username),
-        };
-
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SigningKey));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-        var jwtSecurityToken = new JwtSecurityToken(
-            issuer: null,
-            audience: null,
-            claims: claims,
-            expires: DateTime.Now.AddDays(15),
-            notBefore: DateTime.Now,
-            signingCredentials: credentials
-        );
-        var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-        return token;
+        _authService = authService;
     }
 
-    [HttpGet("ValidateToken")]
-    public bool ValidateToken(string token)
+    [HttpPost("login")]
+    public ActionResult Login(UserLoginDto userForLoginDto)
     {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SigningKey));
-        try
+        var userToLogin = _authService.Login(userForLoginDto);
+        if (!userToLogin.Success)
         {
-            JwtSecurityTokenHandler tokenHandler = new();
-            tokenHandler.ValidateToken(token, new TokenValidationParameters()
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = securityKey,
-                ValidateLifetime = true,
-                ValidateAudience = false,
-                ValidateIssuer = false
-            }, out SecurityToken validatedToken);
-            var jwtToken = (JwtSecurityToken)validatedToken;
-            var claims = jwtToken.Claims.ToList();
-            return true;
+            return BadRequest(userToLogin.Message);
         }
-        catch (System.Exception)
+
+        var result = _authService.CreateAccessToken(userToLogin.Data);
+        if (result.Success)
         {
-            return false;
+            return Ok(result.Data);
         }
+
+        return BadRequest(result.Message);
+    }
+
+    [HttpPost("register")]
+    public ActionResult Register(UserRegisterDto userForRegisterDto)
+    {
+        var userExists = _authService.UserExists(userForRegisterDto.Email);
+        if (!userExists.Success)
+        {
+            return BadRequest(userExists.Message);
+        }
+
+        var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);
+        var result = _authService.CreateAccessToken(registerResult.Data);
+        if (result.Success)
+        {
+            return Ok(result.Data);
+        }
+
+        return BadRequest(result.Message);
     }
 }

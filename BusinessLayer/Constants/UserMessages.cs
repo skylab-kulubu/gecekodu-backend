@@ -2,8 +2,8 @@
 
 public class UserMessages
 {
-    public const string UserBroughtSuccessfully = "Kullanıcı başarıyla getirildi!";
-    public const string UserAddedSuccessfully = "Kullanıcı başarıyla eklendi!";
+    public static string UserBroughtSuccessfully = "Kullanıcı başarıyla getirildi!";
+    public static string UserAddedSuccessfully = "Kullanıcı başarıyla eklendi!";
     public static string UsersBroughtSuccessfully = "Kullanıcılar başarıyla getirildi!";
     public static string UserNotFound = "Kullanıcı bulunamadı!";
     public static string UsersNotFound = "Kullanıcılar bulunamadı!";
