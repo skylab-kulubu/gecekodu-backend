@@ -7,7 +7,7 @@ namespace WebApiLayer.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+//[Authorize]
 public class EventsController(IEventService eventService) : ControllerBase
 {
     [HttpGet("getAllEvents")]
