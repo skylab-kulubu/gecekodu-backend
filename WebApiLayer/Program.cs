@@ -15,14 +15,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Swagger/OpenAPI ayarlarý
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-IServiceCollection services = null;
-
-//Auth
+// JWT Authentication
 var issuer = builder.Configuration["JwtConfig:Issuer"];
 var audience = builder.Configuration["JwtConfig:Audience"];
 var signingKey = builder.Configuration["JwtConfig:SigningKey"];
@@ -40,20 +37,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-// ServiceTool.Create(builder.Services);
-
-services.AddDependencyResolvers(new ICoreModule[]
+// Baðýmlýlýk çözücülerini ekleyin
+builder.Services.AddDependencyResolvers(new ICoreModule[]
 {
     new CoreModule()
 });
 
-
+// Yetkilendirme
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(IdentityConstants.AdminUserPolicyName, p =>
         p.RequireClaim(IdentityConstants.AdminUserClaimName, "true"));
 });
 
+// Servisler
 builder.Services.AddSingleton<IUserService, UserManager>();
 builder.Services.AddSingleton<IUserDal, UserDal>();
 builder.Services.AddSingleton<IEventService, EventManager>();
@@ -63,10 +60,9 @@ builder.Services.AddSingleton<IWorkshopDal, WorkshopDal>();
 builder.Services.AddSingleton<IAuthService, AuthManager>();
 builder.Services.AddSingleton<ITokenHelper, JwtHelper>();
 
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Geliþtirme ortamýnda Swagger kullanýmý
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -75,10 +71,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//Authentication happens first
+// Authentication ve Authorization middleware sýralamasý
 app.UseAuthentication();
-
-//Authorization happens after authentication
 app.UseAuthorization();
 
 app.MapControllers();

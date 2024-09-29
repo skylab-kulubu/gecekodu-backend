@@ -2,7 +2,7 @@
 
 public class WorkshopUpdateDto
 {
-    public string WorkshopName { get; set; }
+    public string WorkshopName { get; set; } = String.Empty;
 
-    public string WorkshopDescription { get; set; }
+    public string WorkshopDescription { get; set; } = String.Empty;
 }

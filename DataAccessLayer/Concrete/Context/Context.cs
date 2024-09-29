@@ -9,9 +9,9 @@ namespace DataAccessLayer.Concrete.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(
-                    "Server=sqlserver;Database=GeceKoduDb;User Id=sa;Password=12345678Aa.;TrustServerCertificate=True",
-                    sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
+                optionsBuilder.UseNpgsql(
+                    "Host=postgres;Database=gecekodu;Username=root;Password=12345678Aa.;Pooling=true;Trust Server Certificate=True",
+                    npgsqlOptions => npgsqlOptions.EnableRetryOnFailure()
                 );
             }
         }
@@ -25,7 +25,9 @@ namespace DataAccessLayer.Concrete.Context
         public DbSet<UserWorkshop> UserWorkshops { get; set; }
 
         public DbSet<UserEvent> UserEvents { get; set; }
+
         public DbSet<OperationClaim> OperationClaims { get; set; }
+
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

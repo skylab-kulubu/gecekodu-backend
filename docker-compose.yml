@@ -1,25 +1,33 @@
-version: '3.8'
-
+version: "3.9"
 services:
-  app:
-    build: .
-    container_name: gecekodu
-    ports:
-      - "8080:8080"
-    depends_on:
-      - sqlserver
+  postgres:
+    image: postgres:latest
+    restart: unless-stopped
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=GeceKoduDb;User Id=sa;Password=12345678Aa.;TrustServerCertificate=True
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=12345678Aa.
+      - POSTGRES_DB=gecekodu
+    ports:
+      - "5433:5432"  # Dışarıya açılan port
+    networks:
+      - nginx-network
 
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server
-    container_name: sqlserver
-    environment:
-      SA_PASSWORD: "12345678Aa."
-      ACCEPT_EULA: "Y"
+  gecekodu-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "1433:1433"
-    volumes:
-      - ./sqlserver/data:/var/opt/mssql/data
-      - ./sqlserver/log:/var/opt/mssql/log
+      - "9002:8080"  # Uygulamanın dışa açılan portu
+    restart: unless-stopped
+    environment:
+      - DB_SOURCE=postgresql://root:12345678Aa.@postgres:5432/gecekodu?sslmode=disable
+    depends_on:
+      - postgres
+    entrypoint: ["/app/wait-for.sh", "postgres:5432"]
+    command: ["dotnet", "WebApiLayer.dll", "--environment=Development"]
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
+    external: true

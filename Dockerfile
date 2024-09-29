@@ -17,4 +17,12 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/WebApiLayer/out .
-ENTRYPOINT ["dotnet", "WebApiLayer.dll", "--environment=Development"]
+
+# Install netcat-openbsd in the runtime image
+RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
+
+# Copy the wait-for.sh script
+COPY wait-for.sh /app/wait-for.sh
+RUN chmod +x /app/wait-for.sh
+
+ENTRYPOINT ["./wait-for.sh", "postgres:5432", "--", "dotnet", "WebApiLayer.dll", "--environment=Development"]
