@@ -8,8 +8,14 @@ import java.util.List;
 
 public interface WorkshopService {
     DataResult<List<Workshop>> getAllWorkshops();
+
     DataResult<Workshop> getWorkshopById(int id);
+
     Result addWorkshop(Workshop workshop);
+
     Result updateWorkshop(Workshop workshop,int id);
+
     Result deleteWorkshop(int id);
+
+
 }

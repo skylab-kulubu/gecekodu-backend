@@ -17,5 +17,7 @@ public interface EventService {
 
     Result deleteEvent(int id);
 
+   // Result addUserToEvent(int eventId, int userId);
+
     //DataResult<List<getEventsDto>> getAllEventsWithDto();
 }

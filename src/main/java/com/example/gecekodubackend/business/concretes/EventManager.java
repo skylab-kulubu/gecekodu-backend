@@ -1,7 +1,9 @@
 package com.example.gecekodubackend.business.concretes;
 
 import com.example.gecekodubackend.business.abstracts.EventService;
+import com.example.gecekodubackend.business.abstracts.UserService;
 import com.example.gecekodubackend.business.constants.EventMessages;
+import com.example.gecekodubackend.business.constants.UserMessages;
 import com.example.gecekodubackend.core.utilities.results.*;
 import com.example.gecekodubackend.dataAccess.abstracts.EventDao;
 import com.example.gecekodubackend.entity.concretes.Event;
@@ -14,12 +16,15 @@ import java.util.Optional;
 @Service
 public class EventManager implements EventService {
 
-    private  final EventDao eventDao;
+    private final EventDao eventDao;
+
 
     @Autowired
     public EventManager(EventDao eventDao) {
         super();
         this.eventDao = eventDao;
+
+
     }
 
     /*
@@ -91,6 +96,8 @@ public class EventManager implements EventService {
         this.eventDao.deleteById(id);
         return new SuccessResult(EventMessages.eventDeletedSuccessfully);
     }
+
+
 
     public Result checkIfEventExists(int id){
         Optional<Event> result = eventDao.findById(id);
