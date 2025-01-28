@@ -25,7 +25,7 @@ public class UsersController {
     }
 
     @GetMapping("/getAllUsers")
-    public DataResult<List<User>> getAllUsers(){
+    public DataResult<List<GetUserDto>> getAllUsers(){
         return this.userService.getAllUsers();
     }
 
@@ -40,8 +40,8 @@ public class UsersController {
     }
 
     @PutMapping("/updateUser/{id}")
-    public Result updateUser(@RequestBody User user, @PathVariable int id){
-        return this.userService.updateUser(user, id);
+    public Result updateUser(@RequestBody GetUserDto getUserDto, @PathVariable int id){
+        return this.userService.updateUser(getUserDto, id);
     }
 
     @DeleteMapping("/deleteUser/{id}")
@@ -57,5 +57,10 @@ public class UsersController {
             return ResponseEntity.ok(result).getBody();
         }
         return ResponseEntity.badRequest().body(result).getBody();
+    }
+
+    @PostMapping("/addUserToEvent")
+    public Result addUserToEvent(@RequestParam int userId, @RequestParam int eventId){
+        return this.userService.addUserToEvent(userId, eventId);
     }
 }

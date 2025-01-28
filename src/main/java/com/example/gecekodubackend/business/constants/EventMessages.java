@@ -10,4 +10,5 @@ public class EventMessages {
     public static String eventsAlreadyExists = "Bu etkinlik mevcut!";
     public static String eventUpdatedSuccessfully = "Etkinlik başarıyla güncellendi!";
     public static String eventDeletedSuccessfully = "Etkinlik başarıyla silindi!";
+    public static String userAddedToEventSuccessfully = "Kullanıcı etkinliğe başarıyla eklendi!";
 }

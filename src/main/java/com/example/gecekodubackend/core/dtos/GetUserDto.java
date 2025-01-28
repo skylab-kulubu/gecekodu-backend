@@ -23,4 +23,5 @@ public class GetUserDto {
     private List<GetWorkshopDto> workshopDto;
 
     private List<GetEventDto> eventDto;
+    
 }

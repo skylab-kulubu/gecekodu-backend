@@ -72,4 +72,6 @@ public class EventsController {
 
         return  ResponseEntity.badRequest().body(result);
     }
+
+
 }

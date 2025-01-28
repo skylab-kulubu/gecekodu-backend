@@ -16,25 +16,25 @@ import java.util.Map;
 
 @Service
 public class JwtService {
-    //defines the secret key for jwt
-    @Value("${jwt.key}")
+
+    @Value("${jwt.secret}")
     private String SECRET;
 
+
     public String generateToken(String username){
-        Map<String,Object> claims = new HashMap<>();
-        claims.put("can","wia");
-        return createToken(claims.username);
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, username);
     }
 
-    private Boolean validateToken(String token, UserDetails userDetails){
-        String username = exractUser(token);
+    public Boolean validateToken(String token, UserDetails userDetails){
+        String username = extractUser(token);
         Date expirationDate = extractExpiration(token);
-        return userDetails.getUsername().equals(username) && expirationDate.after(new Date());
+        return userDetails.getUsername().equals(username) && !expirationDate.before(new Date());
     }
 
-    private Date extractExpiration(String token){
+    private Date extractExpiration(String token) {
         Claims claims = Jwts
-                .parseBuilder()
+                .parserBuilder()
                 .setSigningKey(getSignKey())
                 .build()
                 .parseClaimsJws(token)
@@ -42,9 +42,9 @@ public class JwtService {
         return claims.getExpiration();
     }
 
-    private String exractUser(String token){
+    public String extractUser(String token) {
         Claims claims = Jwts
-                .parseBuilder()
+                .parserBuilder()
                 .setSigningKey(getSignKey())
                 .build()
                 .parseClaimsJws(token)
@@ -52,17 +52,21 @@ public class JwtService {
         return claims.getSubject();
     }
 
-    private String createToken(Map<String, Object> claims, String username){
-        return Jwts.builder()
+    private String createToken(Map<String, Object> claims, String username) {
+        var result = Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
-                .setIssuedAt(new Date(System.currentTimeMillis() + 1000*60*2))
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 60 * 24)) //token is valid for 24 hours
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
+        return result;
     }
 
-    private Key getSignKey(){
+    private Key getSignKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
+
     }
+
 }
