@@ -1,6 +1,5 @@
 package com.example.gecekodubackend.core.entities;
 
-import com.example.gecekodubackend.entity.abstracts.Entity;
 import com.example.gecekodubackend.entity.concretes.Event;
 import com.example.gecekodubackend.entity.concretes.Role;
 import com.example.gecekodubackend.entity.concretes.Workshop;
@@ -11,13 +10,11 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,6 +22,7 @@ import java.util.Set;
 @jakarta.persistence.Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User implements UserDetails {
     @Id
     @Column(name = "user_id")

@@ -5,9 +5,7 @@ import com.example.gecekodubackend.entity.abstracts.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -18,6 +16,7 @@ import java.util.Set;
 @jakarta.persistence.Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Event implements Entity {
     @Id
     @Column(name="event_id")

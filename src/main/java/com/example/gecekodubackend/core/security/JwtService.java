@@ -20,7 +20,6 @@ public class JwtService {
     @Value("${jwt.secret}")
     private String SECRET;
 
-
     public String generateToken(String username){
         Map<String, Object> claims = new HashMap<>();
         return createToken(claims, username);
@@ -53,20 +52,17 @@ public class JwtService {
     }
 
     private String createToken(Map<String, Object> claims, String username) {
-        var result = Jwts.builder()
+        return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 60 * 24)) //token is valid for 24 hours
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24)) //token is valid for 24 hours
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
-        return result;
     }
 
     private Key getSignKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
-
     }
-
 }

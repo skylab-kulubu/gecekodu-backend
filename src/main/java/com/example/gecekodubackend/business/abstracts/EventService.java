@@ -3,21 +3,21 @@ package com.example.gecekodubackend.business.abstracts;
 import com.example.gecekodubackend.core.utilities.results.DataResult;
 import com.example.gecekodubackend.core.utilities.results.Result;
 import com.example.gecekodubackend.entity.concretes.Event;
+import com.example.gecekodubackend.entity.dtos.event.CreateEventDto;
+import com.example.gecekodubackend.entity.dtos.event.GetEventDto;
 
 import java.util.List;
 
 public interface EventService {
-    DataResult<List<Event>> getAllEvents();
+    DataResult<List<GetEventDto>> getAllEvents();
 
-    DataResult<Event> getEventById(int id);
+    DataResult<GetEventDto> getEventById(int id);
 
-    Result addEvent(Event event);
+    Result addEvent(CreateEventDto createEventDto);
 
-    Result updateEvent(int id, Event event);
+    Result updateEvent(int id, GetEventDto getEventDto);
 
     Result deleteEvent(int id);
 
-   // Result addUserToEvent(int eventId, int userId);
-
-    //DataResult<List<getEventsDto>> getAllEventsWithDto();
+    DataResult<Event> getEventEntityById(int id);
 }

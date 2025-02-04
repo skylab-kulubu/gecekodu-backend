@@ -1,15 +1,17 @@
 package com.example.gecekodubackend.business.concretes;
 
 import com.example.gecekodubackend.business.abstracts.EventService;
-import com.example.gecekodubackend.business.abstracts.UserService;
 import com.example.gecekodubackend.business.constants.EventMessages;
-import com.example.gecekodubackend.business.constants.UserMessages;
 import com.example.gecekodubackend.core.utilities.results.*;
 import com.example.gecekodubackend.dataAccess.abstracts.EventDao;
 import com.example.gecekodubackend.entity.concretes.Event;
+import com.example.gecekodubackend.entity.dtos.event.CreateEventDto;
+import com.example.gecekodubackend.entity.dtos.event.GetEventDto;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,70 +20,82 @@ public class EventManager implements EventService {
 
     private final EventDao eventDao;
 
-
     @Autowired
     public EventManager(EventDao eventDao) {
         super();
         this.eventDao = eventDao;
-
-
     }
 
-    /*
     @Override
-    public DataResult<List<getEventsDto>> getAllEventsWithDto() {
-        return new SuccessDataResult<>(eventDao.getAllEventsWithDto(), EventMessages.eventsBroughtSuccessfully);
-    }
-     */
-
-    @Override
-    public DataResult<List<Event>> getAllEvents() {
+    public DataResult<List<GetEventDto>> getAllEvents() {
         List<Event> events = eventDao.findAll();
 
         if(events.isEmpty()){
             return new ErrorDataResult<>(EventMessages.eventsNotFound);
         }
 
-        return new SuccessDataResult<>(events, EventMessages.eventsBroughtSuccessfully);
+        List<GetEventDto> eventDtoList = new ArrayList<>();
+        for(Event event: events){
+            GetEventDto eventDto = new GetEventDto();
+            BeanUtils.copyProperties(event, eventDto);
+            eventDtoList.add(eventDto);
+        }
+        return new SuccessDataResult<>(eventDtoList, EventMessages.eventsBroughtSuccessfully);
     }
 
     @Override
-    public DataResult<Event> getEventById(int id) {
+    public DataResult<GetEventDto> getEventById(int id) {
         var result = eventDao.findById(id);
 
         if(result.isEmpty()){
             return new ErrorDataResult<>(EventMessages.eventNotFound);
         }
 
-        return new SuccessDataResult<>(result.get(),EventMessages.eventBroughtSuccessfully);
+        GetEventDto eventDto = new GetEventDto();
+        BeanUtils.copyProperties(result.get(), eventDto);
+        return new SuccessDataResult<>(eventDto, EventMessages.eventBroughtSuccessfully);
     }
 
     @Override
-    public Result addEvent(Event event) {
-        var result = checkIfEventExists(event.getEventId());
+    public Result addEvent(CreateEventDto createEventDto) {
 
-        if(result.isSuccess()){
+        if(createEventDto.getEventName().isEmpty() || createEventDto.getDescription().isEmpty() || createEventDto.getDate() == null){
+            return new ErrorResult(EventMessages.eventCouldNotBeAdded);
+        }
+
+        if(eventDao.existsByDate(createEventDto.getDate())){
             return new ErrorResult(EventMessages.eventAlreadyExists);
         }
 
+        Event event = Event.builder()
+                .eventName(createEventDto.getEventName())
+                .date(createEventDto.getDate())
+                .description(createEventDto.getDescription())
+                .build();
+
         eventDao.save(event);
+
         return new SuccessResult(EventMessages.eventAddedSuccessfully);
     }
 
     @Override
-    public Result updateEvent(int id, Event event) {
-        var result = checkIfEventExists(event.getEventId());
+    public Result updateEvent(int id, GetEventDto getEventDto) {
+        var result = checkIfEventExists(id);
 
-        if(result == null){
+        if(getEventDto.getEventName().isEmpty() || getEventDto.getDescription().isEmpty() || getEventDto.getDate() == null){
+            return new ErrorResult(EventMessages.eventCouldNotBeUpdated);
+        }
+
+        if(!result.isSuccess()){
             return new ErrorResult(EventMessages.eventNotFound);
         }
 
-        DataResult<Event> eventToUpdate = getEventById(id);
-        eventToUpdate.getData().setEventName(event.getEventName());
-        eventToUpdate.getData().setDescription(event.getDescription());
-        eventToUpdate.getData().setDate(event.getDate());
-        eventDao.save(eventToUpdate.getData());
+        var eventToUpdate = eventDao.findById(id).get();
+        eventToUpdate.setEventName(getEventDto.getEventName());
+        eventToUpdate.setDescription(getEventDto.getDescription());
+        eventToUpdate.setDate(getEventDto.getDate());
 
+        eventDao.save(eventToUpdate);
         return new SuccessResult(EventMessages.eventUpdatedSuccessfully);
     }
 
@@ -97,6 +111,16 @@ public class EventManager implements EventService {
         return new SuccessResult(EventMessages.eventDeletedSuccessfully);
     }
 
+    @Override
+    public DataResult<Event> getEventEntityById(int id) {
+        var result = eventDao.findById(id);
+
+        if(result.isEmpty()){
+            return new ErrorDataResult<>(EventMessages.eventNotFound);
+        }
+
+        return new SuccessDataResult<>(result.get(), EventMessages.eventsBroughtSuccessfully);
+    }
 
 
     public Result checkIfEventExists(int id){

@@ -44,75 +44,36 @@ public class SecurityConfig {
                         x
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
+                                .requestMatchers("/webApi/auth/**").permitAll()
 
-                                .requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/webApi/users/addUser").permitAll()
+                                .requestMatchers("/webApi/users/deleteUser").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/users/updateUser").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/users/getUserById").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/users/getUserByEmail").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/users/getAllUsers").hasAnyRole("ADMIN", "MODERATOR")
+                                //.requestMatchers("/webApi/users/addModerator").hasRole("ADMIN")
+                                //.requestMatchers("/webApi/users/removeModerator").hasRole("ADMIN")
+                                .requestMatchers("/webApi/users/addUserToEvent").hasAnyRole("ADMIN","MODERATOR")
 
-                                .requestMatchers("/api/users/addUser").permitAll()
-                                .requestMatchers("/api/users/deleteUser").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/users/updateUser").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/users/getUserById").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/users/getUserByUsername").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/users/getUsers").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/users/addModerator").hasRole("ADMIN")
-                                .requestMatchers("/api/users/removeModerator").hasRole("ADMIN")
-                                .requestMatchers("/api/users/addVip").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/users/removeVip").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/workshops/addWorkshop").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/workshops/deleteWorkshop").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/workshops/updateWorkshop").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/workshops/getWorkshopById").permitAll()
+                                .requestMatchers("/webApi/workshops/getAllWorkshops").permitAll()
 
-                                .requestMatchers("/api/games/addGame").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/games/connectPlayer").permitAll()
-                                .requestMatchers("/api/games/deleteGame").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/games/endGame").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/games/getGameByGameCode").permitAll()
-
-                                .requestMatchers("/api/games/getGameEntityByGameCode").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/games/getGameId").permitAll()
-                                .requestMatchers("/api/games/getGameEntityByGameId").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/games/getGamesByHostId").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("api/games/getGameStarted").permitAll()
-                                .requestMatchers("/api/games/getLeaderboard").permitAll()
-                                //   .requestMatchers("/api/games/getNextQuestion").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/games/startGame").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/games/updateGame").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-
-                                .requestMatchers("/api/questions/addQuestion").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/questions/deleteQuestion").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/questions/getQuestionById").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/questions/updateQuestion").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/questions/getQuestionsByHost").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/questions/getQuestionEntityById").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/questions/getQuestionsByGameId").hasAnyRole("ADMIN", "MODERATOR")
-
-                                .requestMatchers("/api/answerOptions/addAnswerOption").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/answerOptions/deleteAnswerOption").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/answerOptions/getAnswerOptionById").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/answerOptions/updateAnswerOption").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/answerOptions/getAnswerOptionEntityById").hasAnyRole("ADMIN", "MODERATOR")
-                                //  .requestMatchers("/api/answerOptions/getAnswerOptionsByQuestionId").hasAnyRole("ADMIN", "MODERATOR")
-
-                                .requestMatchers("/api/players/addPlayer").permitAll()
-                                .requestMatchers("/api/players/**").hasAnyRole("ADMIN", "MODERATOR")
-
-                                .requestMatchers("/api/playerAnswers/addPlayerAnswer").permitAll()
-                                .requestMatchers("/api/playerAnswers/getPlayerAnswerById").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/playerAnswers/deletePlayerAnswer").hasAnyRole("ADMIN", "MODERATOR")
-                                .requestMatchers("/api/playerAnswers/getPlayerAnswersByPlayerId").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/playerAnswers/getPlayerAnswersByQuestionId").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-                                .requestMatchers("/api/playerAnswers/validatePlayerAnswer").hasAnyRole("ADMIN", "MODERATOR", "VIP")
-
-
-
-
-
+                                .requestMatchers("/webApi/events/addEvent").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/events/deleteEvent").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/events/getEventById").permitAll()
+                                .requestMatchers("/webApi/events/updateEvent").hasAnyRole("ADMIN", "MODERATOR")
+                                .requestMatchers("/webApi/events/getAllEvents").permitAll()
 
                                 .anyRequest().permitAll()
-
                 )
                 .sessionManagement(x -> x.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-
-
     }
 
     @Bean
@@ -121,12 +82,10 @@ public class SecurityConfig {
         authenticationProvider.setUserDetailsService(userService);
         authenticationProvider.setPasswordEncoder(passwordEncoder);
         return authenticationProvider;
-
     }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-
 }

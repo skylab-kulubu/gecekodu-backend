@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,6 +21,7 @@ import static com.example.gecekodubackend.business.constants.WorkshopMessages.*;
 @jakarta.persistence.Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Workshop implements Entity {
     @Id
     @Column(name = "workshop_id")

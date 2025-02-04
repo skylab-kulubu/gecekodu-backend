@@ -1,7 +1,8 @@
 package com.example.gecekodubackend.webApi.controllers;
 
 import com.example.gecekodubackend.business.abstracts.WorkshopService;
-import com.example.gecekodubackend.entity.concretes.Workshop;
+import com.example.gecekodubackend.entity.dtos.workshop.CreateWorkshopDto;
+import com.example.gecekodubackend.entity.dtos.workshop.GetWorkshopDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,7 @@ public class WorkshopsController {
         if(result.isSuccess()){
             return ResponseEntity.ok().body(result);
         }
+
         return ResponseEntity.badRequest().body(result);
     }
 
@@ -36,22 +38,24 @@ public class WorkshopsController {
         if(result.isSuccess()){
             return ResponseEntity.ok().body(result);
         }
+
         return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/addWorkshop")
-    public ResponseEntity<?> addWorkshop(@Valid @RequestBody Workshop workshop){
-        var result = workshopService.addWorkshop(workshop);
+    public ResponseEntity<?> addWorkshop(@Valid @RequestBody CreateWorkshopDto createWorkshopDto){
+        var result = workshopService.addWorkshop(createWorkshopDto);
 
         if(result.isSuccess()){
             return ResponseEntity.ok().body(result);
         }
+
         return ResponseEntity.badRequest().body(result);
     }
 
     @PutMapping("/updateWorkshop/{id}")
-    public ResponseEntity<?> updateWorkshop(@PathVariable(name = "id") int id, @Valid  @RequestBody Workshop workshop){
-        var result = workshopService.updateWorkshop(workshop, id);
+    public ResponseEntity<?> updateWorkshop(@PathVariable(name = "id") int id, @Valid  @RequestBody GetWorkshopDto getWorkshopDto){
+        var result = workshopService.updateWorkshop(getWorkshopDto, id);
 
         if (result.isSuccess()){
             return ResponseEntity.ok(result);

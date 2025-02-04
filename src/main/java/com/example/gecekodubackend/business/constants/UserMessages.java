@@ -12,6 +12,9 @@ public class UserMessages {
     public static String userDeletedSuccessfully = "Kullanıcı başarıyla silindi!";
     public static String emailCannotBeNull = "Email adresiniz boş olamaz!";
     public static String userDoesNotExist = "Kullanıcı mevcut değil!";
+    public static String userCouldNotAddedToEvent = "Kullanıcı, etkinliğe eklenemedi!";
     public static String userAddedToEventSuccessfully = "Kullanıcı etkinliğe başarıyla eklendi!";
-    ;
+    public static String userCouldNotBeAdded = "Kullanıcı eklenemedi!";
+    public static String userCouldNotBeUpdated = "Kullanıcı güncellenemedi!";
+    public static String moderatorAddedSuccessfully = "Moderatör başarıyla eklendi!";
 }

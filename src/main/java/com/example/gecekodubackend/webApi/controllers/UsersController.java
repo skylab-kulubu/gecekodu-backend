@@ -1,15 +1,10 @@
 package com.example.gecekodubackend.webApi.controllers;
 
 import com.example.gecekodubackend.business.abstracts.UserService;
-import com.example.gecekodubackend.core.dtos.GetUserDto;
-import com.example.gecekodubackend.core.utilities.results.DataResult;
-import com.example.gecekodubackend.core.utilities.results.Result;
-import com.example.gecekodubackend.core.entities.*;
+import com.example.gecekodubackend.core.dtos.CreateUserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("webApi/users")
@@ -25,42 +20,79 @@ public class UsersController {
     }
 
     @GetMapping("/getAllUsers")
-    public DataResult<List<GetUserDto>> getAllUsers(){
-        return this.userService.getAllUsers();
+    public ResponseEntity<?> getAllUsers(){
+        var result = userService.getAllUsers();
+
+        if(result.isSuccess()){
+            return ResponseEntity.ok().body(result);
+        }
+
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/addUser")
-    public Result addUser(@RequestBody User user){
-        return this.userService.addUser(user);
+    public ResponseEntity<?> addUser(@RequestBody CreateUserDto createUserDto){
+        var result = userService.addUser(createUserDto);
+
+        if(result.isSuccess()){
+            return ResponseEntity.ok().body(result);
+        }
+
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("/getUserById/{id}")
-    public DataResult<GetUserDto> getUserById(@PathVariable(name = "id") Integer userId){
-        return this.userService.getUserById(userId);
+    public ResponseEntity<?> getUserById(@PathVariable(name = "id") Integer userId){
+        var result = userService.getUserById(userId);
+
+        if(result.isSuccess()){
+            return ResponseEntity.ok().body(result);
+        }
+
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PutMapping("/updateUser/{id}")
-    public Result updateUser(@RequestBody GetUserDto getUserDto, @PathVariable int id){
-        return this.userService.updateUser(getUserDto, id);
+    public ResponseEntity<?> updateUser(@RequestBody CreateUserDto userDto, @PathVariable int id){
+        var result = userService.updateUser(userDto, id);
+
+        if(result.isSuccess()){
+            return ResponseEntity.ok().body(result);
+        }
+
+        return ResponseEntity.badRequest().body(result);
     }
 
     @DeleteMapping("/deleteUser/{id}")
-    public Result deleteUser(@PathVariable int id){
-        return this.userService.deleteUser(id);
+    public ResponseEntity<?> deleteUser(@PathVariable int id){
+        var result = userService.deleteUser(id);
+
+        if(result.isSuccess()){
+            return ResponseEntity.ok().body(result);
+        }
+
+        return ResponseEntity.badRequest().body(result);
     }
 
     @GetMapping("/getUserByEmail/{email}")
-    public DataResult<GetUserDto> getUserByEmail(@PathVariable(name = "email") String email){
+    public ResponseEntity<?> getUserByEmail(@PathVariable(name = "email") String email){
         var result = userService.getUserByEmail(email);
 
-        if(result == null){
-            return ResponseEntity.ok(result).getBody();
+        if(result.isSuccess()){
+            return ResponseEntity.ok().body(result);
         }
-        return ResponseEntity.badRequest().body(result).getBody();
+
+        return ResponseEntity.badRequest().body(result);
     }
 
     @PostMapping("/addUserToEvent")
-    public Result addUserToEvent(@RequestParam int userId, @RequestParam int eventId){
-        return this.userService.addUserToEvent(userId, eventId);
+    public ResponseEntity<?> addUserToEvent(@RequestParam(name = "userId") int userId, @RequestParam(name = "eventId") int eventId){
+        var result = userService.addUserToEvent(userId, eventId);
+
+        if(result.isSuccess()){
+            return ResponseEntity.ok().body(result);
+        }
+
+        return ResponseEntity.badRequest().body(result);
     }
 }

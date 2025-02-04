@@ -1,5 +1,6 @@
 package com.example.gecekodubackend.business.abstracts;
 
+import com.example.gecekodubackend.core.dtos.CreateUserDto;
 import com.example.gecekodubackend.core.dtos.GetUserDto;
 import com.example.gecekodubackend.core.utilities.results.DataResult;
 import com.example.gecekodubackend.core.utilities.results.Result;
@@ -13,9 +14,9 @@ public interface UserService extends UserDetailsService {
 
     DataResult<GetUserDto> getUserById(int id);
 
-    Result addUser(User user);
+    Result addUser(CreateUserDto createUserDto);
 
-    Result updateUser(GetUserDto userDto, int id);
+    Result updateUser(CreateUserDto userDto, int id);
 
     Result deleteUser(int id);
 
@@ -27,5 +28,7 @@ public interface UserService extends UserDetailsService {
 
     Result addUserToEvent(int userId, int eventId);
 
+    Result addModerator(int id);
 
+    Result removeModerator(int id);
 }
