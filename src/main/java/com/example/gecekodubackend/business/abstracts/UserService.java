@@ -28,6 +28,8 @@ public interface UserService extends UserDetailsService {
 
     Result addUserToEvent(int userId, int eventId);
 
+    Result addUserToWorkshop(int userId, int eventId);
+
     Result addModerator(int id);
 
     Result removeModerator(int id);

@@ -1,6 +1,5 @@
 package com.example.gecekodubackend.business.concretes;
 
-import com.example.gecekodubackend.business.abstracts.EventService;
 import com.example.gecekodubackend.business.abstracts.UserService;
 import com.example.gecekodubackend.business.constants.UserMessages;
 import com.example.gecekodubackend.core.dtos.CreateUserDto;
@@ -24,30 +23,30 @@ import java.util.Set;
 public class UserManager implements UserService {
 
     private final UserDao userDao;
-    private final EventService eventService;
 
     private final BCryptPasswordEncoder passwordEncoder;
     private final EventManager eventManager;
+    private final WorkshopManager workshopManager;
 
     @Autowired
-    public UserManager(UserDao userDao, BCryptPasswordEncoder passwordEncoder, EventService eventService, EventManager eventManager) {
+    public UserManager(UserDao userDao, BCryptPasswordEncoder passwordEncoder, EventManager eventManager, WorkshopManager workshopManager) {
         super();
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
-        this.eventService = eventService;
         this.eventManager = eventManager;
+        this.workshopManager = workshopManager;
     }
 
     @Override
     public DataResult<List<GetUserDto>> getAllUsers() {
         List<User> users = userDao.findAll();
 
-        if(users.isEmpty()){
+        if (users.isEmpty()) {
             return new ErrorDataResult<>(UserMessages.usersNotFound);
         }
 
         List<GetUserDto> userDtoList = new ArrayList<>();
-        for(User user : users){
+        for (User user : users) {
             GetUserDto userDto = new GetUserDto();
             BeanUtils.copyProperties(user, userDto);
             userDtoList.add(userDto);
@@ -60,7 +59,7 @@ public class UserManager implements UserService {
     public DataResult<GetUserDto> getUserById(int id) {
         var result = userDao.findById(id);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorDataResult<>(UserMessages.userNotFound);
         }
 
@@ -73,7 +72,7 @@ public class UserManager implements UserService {
     public Result deleteUser(int id) {
         var result = checkIfUserExists(id);
 
-        if(!result.isSuccess()){
+        if (!result.isSuccess()) {
             return new ErrorResult(UserMessages.userNotFound);
         }
 
@@ -85,7 +84,7 @@ public class UserManager implements UserService {
     public DataResult<GetUserDto> getUserByEmail(String email) {
         var result = userDao.getUserByEmail(email);
 
-        if(result == null){
+        if (result == null) {
             return new ErrorDataResult<>(UserMessages.userNotFound);
         }
 
@@ -98,7 +97,7 @@ public class UserManager implements UserService {
     public DataResult<User> getUserEntityByEmail(String email) {
         var result = userDao.getUserByEmail(email);
 
-        if(result == null){
+        if (result == null) {
             return new ErrorDataResult<>(UserMessages.userNotFound);
         }
 
@@ -109,7 +108,7 @@ public class UserManager implements UserService {
     public DataResult<User> getUserEntityById(int id) {
         var result = userDao.findById(id);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorDataResult<>(UserMessages.userNotFound);
         }
 
@@ -120,13 +119,13 @@ public class UserManager implements UserService {
     public Result addUserToEvent(int userId, int eventId) {
         var userResult = getUserEntityById(userId);
         // against to solid? needs some refactor
-        var eventResult = eventService.getEventEntityById(eventId);
+        var eventResult = eventManager.getEventEntityById(eventId);
 
         var userExists = checkIfUserExists(userId);
 
         var eventExists = eventManager.checkIfEventExists(eventId);
 
-        if(userResult == null || eventResult == null || !userExists.isSuccess() || !eventExists.isSuccess()){
+        if (userResult == null || eventResult == null || !userExists.isSuccess() || !eventExists.isSuccess()) {
             return new ErrorResult(UserMessages.userCouldNotAddedToEvent);
         }
 
@@ -137,40 +136,68 @@ public class UserManager implements UserService {
     }
 
     @Override
+    public Result addUserToWorkshop(int userId, int workshopId) {
+        var userResult = getUserEntityById(userId);
+        // against to solid? needs some refactor
+        var workshopResult = workshopManager.getWorkshopEntityById(workshopId);
+
+        var userExists = checkIfUserExists(userId);
+
+        var workshopExists = eventManager.checkIfEventExists(workshopId);
+
+        if (userResult == null || workshopResult == null || !userExists.isSuccess() || !workshopExists.isSuccess()) {
+            return new ErrorResult(UserMessages.userCouldNotAddedToWorkshop);
+        }
+
+        userResult.getData().getWorkshops().add(workshopResult.getData());
+        userDao.save(userResult.getData());
+
+        return new SuccessResult(UserMessages.userAddedToWorkshopSuccessfully);
+    }
+
+    @Override
     public Result addModerator(int id) {
+        var result = getUserEntityById(id);
 
-        /*
-        var result = userDao.findById(id);
-
-        if(result.isEmpty()){
+        if (!result.isSuccess()) {
             return new ErrorResult(UserMessages.userNotFound);
         }
 
-        result.get().setAuthorities(Role.ROLE_MODERATOR);
-        userDao.save(result.get());
+        var user = result.getData();
+        user.addRole(Role.ROLE_MODERATOR);
+        userDao.save(user);
 
-        */
         return new SuccessResult(UserMessages.moderatorAddedSuccessfully);
     }
 
     @Override
     public Result removeModerator(int id) {
-        return null;
+        var result = getUserEntityById(id);
+
+        if (!result.isSuccess()) {
+            return new ErrorResult(UserMessages.userNotFound);
+        }
+
+        var user = result.getData();
+        user.getAuthorities().remove(Role.ROLE_MODERATOR);
+        userDao.save(user);
+
+        return new SuccessResult(UserMessages.moderatorRemoved);
     }
 
     @Override
     public Result updateUser(CreateUserDto userDto, int id) {
         var result = userDao.findById(id);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorResult(UserMessages.userNotFound);
         }
 
-        if(userDao.existsByEmail(userDto.getEmail())){
+        if (userDao.existsByEmail(userDto.getEmail())) {
             return new ErrorResult(UserMessages.emailAlreadyExists);
         }
 
-        if(userDto.getPassword().isEmpty() || userDto.getEmail().isEmpty() || userDto.getFirstName().isEmpty() || userDto.getLastName().isEmpty()){
+        if (userDto.getPassword().isEmpty() || userDto.getEmail().isEmpty() || userDto.getFirstName().isEmpty() || userDto.getLastName().isEmpty()) {
             return new ErrorResult(UserMessages.userCouldNotBeUpdated);
         }
 
@@ -186,11 +213,11 @@ public class UserManager implements UserService {
     @Override
     public Result addUser(CreateUserDto createUserDto) {
 
-        if(userDao.existsByEmail(createUserDto.getEmail())){
+        if (userDao.existsByEmail(createUserDto.getEmail())) {
             return new ErrorResult(UserMessages.emailAlreadyExists);
         }
 
-        if(createUserDto.getFirstName().isEmpty() || createUserDto.getLastName().isEmpty() || createUserDto.getEmail().isEmpty() || createUserDto.getPassword().isEmpty()){
+        if (createUserDto.getFirstName().isEmpty() || createUserDto.getLastName().isEmpty() || createUserDto.getEmail().isEmpty() || createUserDto.getPassword().isEmpty()) {
             return new ErrorResult(UserMessages.userCouldNotBeAdded);
         }
 
@@ -206,10 +233,10 @@ public class UserManager implements UserService {
         return new SuccessResult(UserMessages.userAddedSuccessfully);
     }
 
-    public Result checkIfUserExists(int id){
+    public Result checkIfUserExists(int id) {
         var result = getUserById(id);
 
-        if(result.isSuccess()){
+        if (result.isSuccess()) {
             return new SuccessResult(UserMessages.userAlreadyExists);
         }
 

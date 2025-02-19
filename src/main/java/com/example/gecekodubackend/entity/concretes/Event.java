@@ -19,16 +19,17 @@ import java.util.Set;
 @Builder
 public class Event implements Entity {
     @Id
-    @Column(name="event_id")
+    @Column(name = "event_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eventId;
 
-    @NotEmpty(message = "Çalışma adı boş olamaz!")
-    @Size(min = 0, max = 50)
-    @Column(name="event_name")
+    @NotEmpty(message = "Etkinlik adı boş olamaz!")
+    @Size(min = 3, max = 20, message = "En az 3, en fazla 20 karakter girebilirsiniz!")
+    @Column(name = "event_name")
     private String eventName;
 
-    @Size(min = 0, max = 50)
+    @NotEmpty(message = "Etkinlik açıklaması boş olamaz!")
+    @Size(min = 3, max = 50, message = "En az 3, en fazla 50 karakter girebilirsiniz!")
     @Column(name = "description")
     private String description;
 

@@ -30,12 +30,12 @@ public class EventManager implements EventService {
     public DataResult<List<GetEventDto>> getAllEvents() {
         List<Event> events = eventDao.findAll();
 
-        if(events.isEmpty()){
+        if (events.isEmpty()) {
             return new ErrorDataResult<>(EventMessages.eventsNotFound);
         }
 
         List<GetEventDto> eventDtoList = new ArrayList<>();
-        for(Event event: events){
+        for (Event event : events) {
             GetEventDto eventDto = new GetEventDto();
             BeanUtils.copyProperties(event, eventDto);
             eventDtoList.add(eventDto);
@@ -47,31 +47,32 @@ public class EventManager implements EventService {
     public DataResult<GetEventDto> getEventById(int id) {
         var result = eventDao.findById(id);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorDataResult<>(EventMessages.eventNotFound);
         }
 
         GetEventDto eventDto = new GetEventDto();
         BeanUtils.copyProperties(result.get(), eventDto);
+
         return new SuccessDataResult<>(eventDto, EventMessages.eventBroughtSuccessfully);
     }
 
     @Override
     public Result addEvent(CreateEventDto createEventDto) {
 
-        if(createEventDto.getEventName().isEmpty() || createEventDto.getDescription().isEmpty() || createEventDto.getDate() == null){
+        if (createEventDto.getEventName().isEmpty() || createEventDto.getDescription().isEmpty() || createEventDto.getDate() == null) {
             return new ErrorResult(EventMessages.eventCouldNotBeAdded);
         }
 
-        if(eventDao.existsByDate(createEventDto.getDate())){
+        if (eventDao.existsByDate(createEventDto.getDate())) {
             return new ErrorResult(EventMessages.eventAlreadyExists);
         }
 
-        Event event = Event.builder()
-                .eventName(createEventDto.getEventName())
-                .date(createEventDto.getDate())
-                .description(createEventDto.getDescription())
-                .build();
+        if (eventDao.existsByEventName(createEventDto.getEventName())) {
+            return new ErrorResult(EventMessages.eventCouldNotBeAdded);
+        }
+
+        Event event = Event.builder().eventName(createEventDto.getEventName()).date(createEventDto.getDate()).description(createEventDto.getDescription()).build();
 
         eventDao.save(event);
 
@@ -79,21 +80,29 @@ public class EventManager implements EventService {
     }
 
     @Override
-    public Result updateEvent(int id, GetEventDto getEventDto) {
+    public Result updateEvent(int id, CreateEventDto createEventDto) {
         var result = checkIfEventExists(id);
 
-        if(getEventDto.getEventName().isEmpty() || getEventDto.getDescription().isEmpty() || getEventDto.getDate() == null){
+        if (createEventDto.getEventName().isEmpty() || createEventDto.getDescription().isEmpty() || createEventDto.getDate() == null) {
             return new ErrorResult(EventMessages.eventCouldNotBeUpdated);
         }
 
-        if(!result.isSuccess()){
+        if (eventDao.existsByDate(createEventDto.getDate())) {
+            return new ErrorResult(EventMessages.eventAlreadyExists);
+        }
+
+        if (eventDao.existsByEventName(createEventDto.getEventName())) {
+            return new ErrorResult(EventMessages.eventCouldNotBeUpdated);
+        }
+
+        if (!result.isSuccess()) {
             return new ErrorResult(EventMessages.eventNotFound);
         }
 
         var eventToUpdate = eventDao.findById(id).get();
-        eventToUpdate.setEventName(getEventDto.getEventName());
-        eventToUpdate.setDescription(getEventDto.getDescription());
-        eventToUpdate.setDate(getEventDto.getDate());
+        eventToUpdate.setEventName(createEventDto.getEventName());
+        eventToUpdate.setDescription(createEventDto.getDescription());
+        eventToUpdate.setDate(createEventDto.getDate());
 
         eventDao.save(eventToUpdate);
         return new SuccessResult(EventMessages.eventUpdatedSuccessfully);
@@ -103,7 +112,7 @@ public class EventManager implements EventService {
     public Result deleteEvent(int id) {
         var result = eventDao.findById(id);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorResult(EventMessages.eventNotFound);
         }
 
@@ -115,18 +124,31 @@ public class EventManager implements EventService {
     public DataResult<Event> getEventEntityById(int id) {
         var result = eventDao.findById(id);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorDataResult<>(EventMessages.eventNotFound);
         }
 
-        return new SuccessDataResult<>(result.get(), EventMessages.eventsBroughtSuccessfully);
+        return new SuccessDataResult<>(result.get(), EventMessages.eventBroughtSuccessfully);
     }
 
+    @Override
+    public DataResult<GetEventDto> getEventByName(String eventName) {
+        var event = eventDao.getEventByEventName(eventName);
 
-    public Result checkIfEventExists(int id){
+        if (event == null) {
+            return new ErrorDataResult<>(EventMessages.eventNotFound);
+        }
+
+        GetEventDto eventDto = new GetEventDto();
+        BeanUtils.copyProperties(event, eventDto);
+
+        return new SuccessDataResult<>(eventDto, EventMessages.eventBroughtSuccessfully);
+    }
+
+    public Result checkIfEventExists(int id) {
         Optional<Event> result = eventDao.findById(id);
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorResult(EventMessages.eventNotFound);
         }
 

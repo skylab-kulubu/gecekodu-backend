@@ -1,6 +1,7 @@
 package com.example.gecekodubackend.business.concretes;
 
 import com.example.gecekodubackend.business.abstracts.WorkshopService;
+import com.example.gecekodubackend.business.constants.EventMessages;
 import com.example.gecekodubackend.business.constants.WorkshopMessages;
 import com.example.gecekodubackend.core.utilities.results.*;
 import com.example.gecekodubackend.dataAccess.abstracts.WorkshopDao;
@@ -28,12 +29,12 @@ public class WorkshopManager implements WorkshopService {
     public DataResult<List<GetWorkshopDto>> getAllWorkshops() {
         List<Workshop> result = workshopDao.findAll();
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             return new ErrorDataResult<>(WorkshopMessages.workshopsNotFound);
         }
 
         List<GetWorkshopDto> workshopDtoList = new ArrayList<>();
-        for(Workshop workshop : result){
+        for (Workshop workshop : result) {
             GetWorkshopDto workshopDto = new GetWorkshopDto();
             BeanUtils.copyProperties(workshop, workshopDto);
             workshopDtoList.add(workshopDto);
@@ -46,7 +47,7 @@ public class WorkshopManager implements WorkshopService {
     public DataResult<GetWorkshopDto> getWorkshopById(int id) {
         var workshop = workshopDao.findById(id);
 
-        if(workshop.isEmpty()){
+        if (workshop.isEmpty()) {
             return new ErrorDataResult<>(WorkshopMessages.workshopNotFound);
         }
 
@@ -58,11 +59,11 @@ public class WorkshopManager implements WorkshopService {
 
     @Override
     public Result addWorkshop(CreateWorkshopDto createWorkshopDto) {
-        if(workshopDao.existsByWorkshopName(createWorkshopDto.getWorkshopName())){
+        if (workshopDao.existsByWorkshopName(createWorkshopDto.getWorkshopName())) {
             return new ErrorResult(WorkshopMessages.workshopAlreadyExists);
         }
 
-        if(createWorkshopDto.getWorkshopName().isEmpty() || createWorkshopDto.getDate() == null || createWorkshopDto.getDescription().isEmpty()){
+        if (createWorkshopDto.getWorkshopName().isEmpty() || createWorkshopDto.getDate() == null || createWorkshopDto.getDescription().isEmpty()) {
             return new ErrorResult(WorkshopMessages.workshopCouldNotBeAdded);
         }
 
@@ -77,21 +78,26 @@ public class WorkshopManager implements WorkshopService {
     }
 
     @Override
-    public Result updateWorkshop(GetWorkshopDto getWorkshopDto, int id) {
+    public Result updateWorkshop(CreateWorkshopDto createWorkshopDto, int id) {
+
         var result = checkIfTheWorkshopExists(id);
 
-        if(getWorkshopDto.getWorkshopName().isEmpty() || getWorkshopDto.getDate() == null|| getWorkshopDto.getDescription().isEmpty()){
+        if (checkIfTheWorkshopExistsByName(createWorkshopDto.getWorkshopName()).isSuccess()) {
+            return new ErrorResult(WorkshopMessages.workshopAlreadyExists);
+        }
+        
+        if (createWorkshopDto.getWorkshopName().isEmpty() || createWorkshopDto.getDate() == null || createWorkshopDto.getDescription().isEmpty()) {
             return new ErrorResult(WorkshopMessages.workshopCouldNotBeUpdated);
         }
 
-        if (!result.isSuccess()){
+        if (!result.isSuccess()) {
             return new ErrorResult(WorkshopMessages.workshopNotFound);
         }
 
         var workshopToUpdate = workshopDao.findById(id).get();
-        workshopToUpdate.setWorkshopName(getWorkshopDto.getWorkshopName());
-        workshopToUpdate.setDescription(getWorkshopDto.getDescription());
-        workshopToUpdate.setDate(getWorkshopDto.getDate());
+        workshopToUpdate.setWorkshopName(createWorkshopDto.getWorkshopName());
+        workshopToUpdate.setDescription(createWorkshopDto.getDescription());
+        workshopToUpdate.setDate(createWorkshopDto.getDate());
 
         workshopDao.save(workshopToUpdate);
         return new SuccessResult(WorkshopMessages.workshopUpdatedSuccessfully);
@@ -101,7 +107,7 @@ public class WorkshopManager implements WorkshopService {
     public Result deleteWorkshop(int id) {
         var workshop = workshopDao.findById(id);
 
-        if(workshop.isEmpty()){
+        if (workshop.isEmpty()) {
             return new ErrorResult(WorkshopMessages.workshopNotFound);
         }
 
@@ -109,10 +115,45 @@ public class WorkshopManager implements WorkshopService {
         return new SuccessResult(WorkshopMessages.workshopDeletedSuccessfully);
     }
 
-    public Result checkIfTheWorkshopExists(int id){
+    @Override
+    public DataResult<Workshop> getWorkshopEntityById(int id) {
+        var result = workshopDao.findById(id);
+
+        if (result.isEmpty()) {
+            return new ErrorDataResult<>(EventMessages.eventNotFound);
+        }
+
+        return new SuccessDataResult<>(result.get(), EventMessages.eventBroughtSuccessfully);
+    }
+
+    @Override
+    public DataResult<GetWorkshopDto> getWorkshopByName(String workshopName) {
+        var workshop = workshopDao.findWorkshopByWorkshopName(workshopName);
+
+        if (workshop == null) {
+            return new ErrorDataResult<>(WorkshopMessages.workshopNotFound);
+        }
+
+        GetWorkshopDto workshopDto = new GetWorkshopDto();
+        BeanUtils.copyProperties(workshop, workshopDto);
+
+        return new SuccessDataResult<>(workshopDto, WorkshopMessages.workshopBroughtSuccessfully);
+    }
+
+    public Result checkIfTheWorkshopExists(int id) {
         Optional<Workshop> workshop = workshopDao.findById(id);
 
-        if(workshop.isEmpty()){
+        if (workshop.isEmpty()) {
+            return new ErrorResult(WorkshopMessages.workshopNotFound);
+        }
+
+        return new SuccessResult(WorkshopMessages.workshopAlreadyExists);
+    }
+
+    public Result checkIfTheWorkshopExistsByName(String eventName) {
+        var workshop = workshopDao.findWorkshopByWorkshopName(eventName);
+
+        if (workshop == null) {
             return new ErrorResult(WorkshopMessages.workshopNotFound);
         }
 

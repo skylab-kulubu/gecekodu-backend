@@ -15,9 +15,11 @@ public interface EventService {
 
     Result addEvent(CreateEventDto createEventDto);
 
-    Result updateEvent(int id, GetEventDto getEventDto);
+    Result updateEvent(int id, CreateEventDto createEventDto);
 
     Result deleteEvent(int id);
 
     DataResult<Event> getEventEntityById(int id);
+
+    DataResult<GetEventDto> getEventByName(String eventName);
 }

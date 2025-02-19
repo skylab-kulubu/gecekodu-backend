@@ -101,4 +101,7 @@ public class User implements UserDetails {
         return true;
     }
 
+    public void addRole(Role role) {
+        authorities.add(role);
+    }
 }

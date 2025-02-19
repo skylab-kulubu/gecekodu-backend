@@ -14,8 +14,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 import java.util.Set;
 
-import static com.example.gecekodubackend.business.constants.WorkshopMessages.*;
-
 @Data
 @Table(name = "workshops")
 @jakarta.persistence.Entity
@@ -29,11 +27,12 @@ public class Workshop implements Entity {
     private int workshopId;
 
     @NotEmpty(message = "Çalışma adı boş olamaz!")
-    @Size(min = 0, max = 50)
+    @Size(min = 3, max = 20, message = "En az 3, en fazla 20 karakter girebilirsiniz!")
     @Column(name = "workshop_name")
     private String workshopName;
 
-    @Size(min = 0, max = 50)
+    @NotEmpty(message = "Çalışma açıklaması boş olamaz!")
+    @Size(min = 3, max = 50, message = "En az 3, en fazla 50 karakter girebilirsiniz!")
     @Column(name = "description")
     private String description;
 

@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Date;
 
 public interface EventDao extends JpaRepository<Event, Integer> {
-    boolean existsByEventName(String eventName);
-
     boolean existsByDate(Date date);
+
+    Event getEventByEventName(String eventName);
+
+    boolean existsByEventName(String eventName);
 }
