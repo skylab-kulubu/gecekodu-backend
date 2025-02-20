@@ -1,6 +1,7 @@
 package com.example.gecekodubackend.entity.dtos.workshop;
 
 import com.example.gecekodubackend.core.dtos.GetUserDto;
+import com.example.gecekodubackend.core.dtos.GetUserForEventDto;
 import com.example.gecekodubackend.entity.concretes.Workshop;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,14 +26,14 @@ public class GetWorkshopDto {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
 
-    private List<GetUserDto> userDtoList;
+    private List<GetUserForEventDto> userDtoList;
 
     public GetWorkshopDto(Workshop workshop){
         this.workshopId = workshop.getWorkshopId();
         this.workshopName = workshop.getWorkshopName();
         this.date = workshop.getDate();
         this.description = workshop.getDescription();
-        this.userDtoList = new GetUserDto().buildListGetUserDto(workshop.getUsers().stream().toList());
+        this.userDtoList = new GetUserForEventDto().buildListGetUserForEventDto(workshop.getUsers().stream().toList());
     }
 
     public List<GetWorkshopDto> buildListGetWorkshopDto(List<Workshop> workshops){

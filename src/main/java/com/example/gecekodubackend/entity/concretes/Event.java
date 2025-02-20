@@ -39,4 +39,18 @@ public class Event implements Entity {
 
     @ManyToMany(mappedBy = "events")
     private Set<User> users;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return eventId == event.eventId; // Compare only ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(eventId); // Use only ID
+    }
+
 }

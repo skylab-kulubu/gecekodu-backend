@@ -4,6 +4,7 @@ import com.example.gecekodubackend.entity.concretes.Event;
 import com.example.gecekodubackend.entity.concretes.Role;
 import com.example.gecekodubackend.entity.concretes.Workshop;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -104,4 +105,17 @@ public class User implements UserDetails {
     public void addRole(Role role) {
         authorities.add(role);
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userId == user.userId; // Compare only ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(userId); // Use only ID
+    }
+
 }

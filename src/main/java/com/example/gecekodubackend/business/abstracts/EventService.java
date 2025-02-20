@@ -17,6 +17,8 @@ public interface EventService {
 
     Result updateEvent(int id, CreateEventDto createEventDto);
 
+    Result updateEventByEntity(Event event);
+
     Result deleteEvent(int id);
 
     DataResult<Event> getEventEntityById(int id);

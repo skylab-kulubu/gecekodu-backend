@@ -1,6 +1,8 @@
 package com.example.gecekodubackend.business.concretes;
 
+import com.example.gecekodubackend.business.abstracts.EventService;
 import com.example.gecekodubackend.business.abstracts.UserService;
+import com.example.gecekodubackend.business.abstracts.WorkshopService;
 import com.example.gecekodubackend.business.constants.UserMessages;
 import com.example.gecekodubackend.core.dtos.CreateUserDto;
 import com.example.gecekodubackend.core.dtos.GetUserDto;
@@ -27,14 +29,18 @@ public class UserManager implements UserService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final EventManager eventManager;
     private final WorkshopManager workshopManager;
+    private final EventService eventService;
+    private final WorkshopService workshopService;
 
     @Autowired
-    public UserManager(UserDao userDao, BCryptPasswordEncoder passwordEncoder, EventManager eventManager, WorkshopManager workshopManager) {
+    public UserManager(UserDao userDao, BCryptPasswordEncoder passwordEncoder, EventManager eventManager, WorkshopManager workshopManager, EventService eventService, WorkshopService workshopService) {
         super();
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.eventManager = eventManager;
         this.workshopManager = workshopManager;
+        this.eventService = eventService;
+        this.workshopService = workshopService;
     }
 
     @Override
@@ -45,12 +51,7 @@ public class UserManager implements UserService {
             return new ErrorDataResult<>(UserMessages.usersNotFound);
         }
 
-        List<GetUserDto> userDtoList = new ArrayList<>();
-        for (User user : users) {
-            GetUserDto userDto = new GetUserDto();
-            BeanUtils.copyProperties(user, userDto);
-            userDtoList.add(userDto);
-        }
+        var userDtoList = new GetUserDto().buildListGetUserDto(users);
 
         return new SuccessDataResult<>(userDtoList, UserMessages.usersBroughtSuccessfully);
     }
@@ -143,7 +144,7 @@ public class UserManager implements UserService {
 
         var userExists = checkIfUserExists(userId);
 
-        var workshopExists = eventManager.checkIfEventExists(workshopId);
+        var workshopExists = workshopManager.checkIfTheWorkshopExists(workshopId);
 
         if (userResult == null || workshopResult == null || !userExists.isSuccess() || !workshopExists.isSuccess()) {
             return new ErrorResult(UserMessages.userCouldNotAddedToWorkshop);
@@ -151,6 +152,7 @@ public class UserManager implements UserService {
 
         userResult.getData().getWorkshops().add(workshopResult.getData());
         userDao.save(userResult.getData());
+
 
         return new SuccessResult(UserMessages.userAddedToWorkshopSuccessfully);
     }

@@ -42,4 +42,17 @@ public class Workshop implements Entity {
 
     @ManyToMany(mappedBy = "workshops")
     private Set<User> users;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Workshop workshop = (Workshop) o;
+        return workshopId == workshop.workshopId; // Compare only ID
+    }
+
+    @Override
+    public int hashCode() {
+        return workshopId;
+    }
 }

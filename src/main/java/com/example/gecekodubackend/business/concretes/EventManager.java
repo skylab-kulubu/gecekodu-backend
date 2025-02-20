@@ -34,12 +34,7 @@ public class EventManager implements EventService {
             return new ErrorDataResult<>(EventMessages.eventsNotFound);
         }
 
-        List<GetEventDto> eventDtoList = new ArrayList<>();
-        for (Event event : events) {
-            GetEventDto eventDto = new GetEventDto();
-            BeanUtils.copyProperties(event, eventDto);
-            eventDtoList.add(eventDto);
-        }
+        var eventDtoList = new GetEventDto().buildListGetEvent(events);
         return new SuccessDataResult<>(eventDtoList, EventMessages.eventsBroughtSuccessfully);
     }
 
@@ -72,7 +67,12 @@ public class EventManager implements EventService {
             return new ErrorResult(EventMessages.eventCouldNotBeAdded);
         }
 
-        Event event = Event.builder().eventName(createEventDto.getEventName()).date(createEventDto.getDate()).description(createEventDto.getDescription()).build();
+        Event event = Event.builder()
+                .eventName(createEventDto.getEventName())
+                .date(createEventDto.getDate())
+                .description(createEventDto.getDescription())
+                .date(createEventDto.getDate())
+                .build();
 
         eventDao.save(event);
 
@@ -105,6 +105,18 @@ public class EventManager implements EventService {
         eventToUpdate.setDate(createEventDto.getDate());
 
         eventDao.save(eventToUpdate);
+        return new SuccessResult(EventMessages.eventUpdatedSuccessfully);
+    }
+
+    @Override
+    public Result updateEventByEntity(Event event) {
+        var result = checkIfEventExists(event.getEventId());
+
+        if (!result.isSuccess()) {
+            return new ErrorResult(EventMessages.eventNotFound);
+        }
+
+        eventDao.save(event);
         return new SuccessResult(EventMessages.eventUpdatedSuccessfully);
     }
 

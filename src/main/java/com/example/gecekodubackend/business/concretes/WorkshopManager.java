@@ -33,12 +33,7 @@ public class WorkshopManager implements WorkshopService {
             return new ErrorDataResult<>(WorkshopMessages.workshopsNotFound);
         }
 
-        List<GetWorkshopDto> workshopDtoList = new ArrayList<>();
-        for (Workshop workshop : result) {
-            GetWorkshopDto workshopDto = new GetWorkshopDto();
-            BeanUtils.copyProperties(workshop, workshopDto);
-            workshopDtoList.add(workshopDto);
-        }
+        var workshopDtoList = new GetWorkshopDto().buildListGetWorkshopDto(result);
 
         return new SuccessDataResult<>(workshopDtoList, WorkshopMessages.workshopsBroughtSuccessfully);
     }
@@ -138,6 +133,18 @@ public class WorkshopManager implements WorkshopService {
         BeanUtils.copyProperties(workshop, workshopDto);
 
         return new SuccessDataResult<>(workshopDto, WorkshopMessages.workshopBroughtSuccessfully);
+    }
+
+    @Override
+    public Result updateWorkshopByEntity(Workshop workshop) {
+        var result = checkIfTheWorkshopExists(workshop.getWorkshopId());
+
+        if (!result.isSuccess()) {
+            return new ErrorResult(WorkshopMessages.workshopNotFound);
+        }
+
+        workshopDao.save(workshop);
+        return new SuccessResult(WorkshopMessages.workshopUpdatedSuccessfully);
     }
 
     public Result checkIfTheWorkshopExists(int id) {
