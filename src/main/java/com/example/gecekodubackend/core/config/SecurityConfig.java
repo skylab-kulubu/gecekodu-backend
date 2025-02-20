@@ -71,7 +71,7 @@ public class SecurityConfig {
                                 .requestMatchers("/webApi/events/getAllEvents").permitAll()
                                 .requestMatchers("/webApi/events/getEventByName").hasAnyRole("ADMIN", "MODERATOR")
 
-                                .anyRequest().permitAll()
+                                .anyRequest().hasAnyRole("ADMIN")
                 )
                 .sessionManagement(x -> x.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

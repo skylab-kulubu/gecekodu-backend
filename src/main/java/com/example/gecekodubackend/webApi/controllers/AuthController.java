@@ -2,6 +2,7 @@ package com.example.gecekodubackend.webApi.controllers;
 
 import com.example.gecekodubackend.business.abstracts.UserService;
 import com.example.gecekodubackend.core.security.JwtService;
+import com.example.gecekodubackend.core.utilities.results.SuccessDataResult;
 import com.example.gecekodubackend.entity.dtos.auth.AuthDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,9 +33,9 @@ public class AuthController {
         var result = jwtService.generateToken(authRequest.getEmail());
 
         if (authentication.isAuthenticated()) {
-            return ResponseEntity.ok().body(result);
+            return ResponseEntity.ok(new SuccessDataResult<>(result, "Token generated")) ;
         }
 
-        return ResponseEntity.badRequest().body(result);
+        return ResponseEntity.badRequest().body("Invalid email or password");
     }
 }

@@ -22,4 +22,6 @@ public interface WorkshopService {
     DataResult<Workshop> getWorkshopEntityById(int id);
 
     DataResult<GetWorkshopDto> getWorkshopByName(String workshopName);
+
+    Result updateWorkshopByEntity(Workshop workshop);
 }
